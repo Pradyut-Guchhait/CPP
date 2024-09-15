@@ -5,87 +5,88 @@
     data_type variable1, variable2, variable3;
 */
 
-//Variable Declaration,initialisation and defination
-int main(){
-    int a; //declaration
-    a=10; //initialisation
+// Variable Declaration,initialisation and defination
+int main()
+{
+    int a;  // declaration
+    a = 10; // initialisation
 
-    int b = 20; //defination = declaration + initialisation
+    int b = 20; // defination = declaration + initialisation
 
-    char a123 = 'a'; //declaration and defination of a variable a123
+    char a123 = 'a'; // declaration and defination of a variable a123
 
-    float c; //both declaration and defination as some garbage value iss being assigned
+    float c; // both declaration and defination as some garbage value iss being assigned
 
     return 0;
-
 }
 
 /*Types of variable:
 1.Local  variable: A variable defined within a block or method or constructor is called a local variable.
 2.Instance  variable: A variable defined within a class but outside any method or constructor is called an instance variable.
-3.Static variable:  A variable defined with the static keyword is called a static variable, also known as class variable. 
+3.Static variable:  A variable defined with the static keyword is called a static variable, also known as class variable.
 */
-class Ex{
+class Ex
+{
 
-    int a; //instance variable
-    static int b; //static variable
+    int a;        // instance variable
+    static int b; // static variable
 };
 
 /*Constants:  Once declared and initialized can not be modified
 *How to declare:
     const data_type variable_name = value;
 */
-const int int_const = 5; //integer
-const char char_const = 'A'; //char
-const float float_const = 15.66; //float
+const int int_const = 5;         // integer
+const char char_const = 'A';     // char
+const float float_const = 15.66; // float
 
 /*Defining Constant using #define Preprocessor
     #define const_name value
 */
-#define pi 3.14 //now the value of pi is 3.14 and cannot be changed
+#define pi 3.14 // now the value of pi is 3.14 and cannot be changed
 
 //\\***/Scope of Variables/***\\//
 /*Two types of variable scopes
-1.Local: ^The variables defined within a block or method or constructor are called local variables. 
+1.Local: ^The variables defined within a block or method or constructor are called local variables.
          ^Can be accessed only within the block or method or constructor.
 
 2.Global:^The variables defined outside any block or method or constructor are called global variables.
          ^Can be accessed from any block or method or constructor.
 */
-// global variable 
-int global = 5; 
-  
-int main() 
-{    
-    // local variable with same  
-    // name as that of global variable 
-      
-    int global = 2; 
-    cout << global << endl; 
-} 
-//Compiler will give precedence to local variable over global variable. 
+// global variable
+int global = 5;
 
-//\**What if we want to acces the Global variable**\// 
-// Global x   
-int x = 0;   
-    
-int main() 
-{ 
-  // Local x     
-  int x = 10;  
+int main()
+{
+    // local variable with same
+    // name as that of global variable
 
-  //We will use  scope resolution operator to access the global variable.
-  cout << "Value of global x is " << ::x;
-  cout<< "\nValue of local x is " << x;   
-  return 0; 
-} 
+    int global = 2;
+    cout << global << endl;
+}
+// Compiler will give precedence to local variable over global variable.
+
+//\**What if we want to acces the Global variable**\//
+// Global x
+int x = 0;
+
+int main()
+{
+    // Local x
+    int x = 10;
+
+    // We will use  scope resolution operator to access the global variable.
+    cout << "Value of global x is " << ::x;
+    cout << "\nValue of local x is " << x;
+    return 0;
+}
 
 //\\***/STORAGE CLASSES IN C++/***\\//
 /*Used to describe the characteristics of a variabl/function.
-*Syntax:storage-class var_data_type var_name;
-*/
+ *Syntax:storage-class var_data_type var_name;
+ */
 
-/*///*Types of Storage Classes in C++*///*/
+/*///*Types of Storage Classes in C++*/ //*/
 /*1.Auto: ^The variable declared inside a block or function is called an auto variable.
         ^It is the default storage class in C++.
         ^Properties of auto Storage Class Objects
@@ -101,7 +102,7 @@ void autoStorageClass()
     // Declaring an auto variable
     int a = 32;
     float b = 3.2;
-    char* c = "GeeksforGeeks";
+    char *c = "GeeksforGeeks";
     char d = 'G';
 
     // printing the auto variables
@@ -182,11 +183,11 @@ int main()
     // Calling the static parts
     cout << staticFun() << "\n";
     cout << staticFun() << "\n";
-    
+
     // Calling the non-static parts
     cout << nonStaticFun() << "\n";
     cout << nonStaticFun() << "\n";
-    
+
     return 0;
 }
 
@@ -244,7 +245,8 @@ int main()
                 =>Memory Location: RAM
                 =>Lifetime: Till the end of the block.
 */
-class Test {
+class Test
+{
 public:
     int x;
     // defining mutable variable y
@@ -290,25 +292,25 @@ int main()
 {
     // Created 3 threads
     // Modify value in thread 1
-    thread th1([]() {
+    thread th1([]()
+               {
         value += 18;
         lock_guard<mutex> lock(mtx);
-        cout << "Thread 1 value: " << value << '\n';
-    });
+        cout << "Thread 1 value: " << value << '\n'; });
 
-    thread th2([]() {
+    thread th2([]()
+               {
         // Modify value in thread 2
         value += 7;
         lock_guard<mutex> lock(mtx);
-        cout << "Thread 2 value: " << value << '\n';
-    });
+        cout << "Thread 2 value: " << value << '\n'; });
 
-    thread th3([]() {
+    thread th3([]()
+               {
         // Modify value in thread 3
         value += 13;
         lock_guard<mutex> lock(mtx);
-        cout << "Thread 3 value: " << value << '\n';
-    });
+        cout << "Thread 3 value: " << value << '\n'; });
 
     // Wait for all threads to finish
     th1.join();
@@ -323,28 +325,28 @@ int main()
 
 //\\***STATIC KEYWORD IN C++***\\//
 /*Static Variables: Variables in a function, Variables in a class
-*Static Members of Class: Class objects and Functions in a class.
-*/
+ *Static Members of Class: Class objects and Functions in a class.
+ */
 /*
-*Static variables in a Function: 
-    When a variable is declared as static, 
-    space for it gets allocated for the lifetime of the program. 
-    Even if the function is called multiple times, 
-    space for the static variable is allocated only once and 
-    the value of the variable in the previous call gets carried through the next function call. 
+*Static variables in a Function:
+    When a variable is declared as static,
+    space for it gets allocated for the lifetime of the program.
+    Even if the function is called multiple times,
+    space for the static variable is allocated only once and
+    the value of the variable in the previous call gets carried through the next function call.
 */
 void demo()
 {
     // static variable
     static int count = 0;
     cout << count << " ";
- 
+
     // value is updated and
     // will be carried to next
     // function calls
     count++;
 }
- 
+
 int main()
 {
     for (int i = 0; i < 5; i++)
@@ -352,25 +354,25 @@ int main()
     return 0;
 }
 
-
 /*
-*Static  Variables in a Class: 
-    The static variables in a class are shared by the objects. 
-    There can not be multiple copies of the same static variables for different objects. 
-    Also because of this reason static variables can not be initialized using constructors. 
+*Static  Variables in a Class:
+    The static variables in a class are shared by the objects.
+    There can not be multiple copies of the same static variables for different objects.
+    Also because of this reason static variables can not be initialized using constructors.
 
 */
-class GfG {
+class GfG
+{
 public:
     static int i;
- 
-    GfG(){
+
+    GfG() {
         // Do nothing
     };
 };
- 
+
 int GfG::i = 1;
- 
+
 int main()
 {
     GfG obj;
@@ -379,13 +381,14 @@ int main()
 }
 
 /*
-*Class objects as static: 
-    Just like variables, objects also when declared as static 
+*Class objects as static:
+    Just like variables, objects also when declared as static
     have a scope till the lifetime of the program.
 */
-class GfG {
+class GfG
+{
     int i;
- 
+
 public:
     GfG()
     {
@@ -394,11 +397,12 @@ public:
     }
     ~GfG() { cout << "Inside Destructor\n"; }
 };
- 
+
 int main()
 {
     int x = 0;
-    if (x == 0) {
+    if (x == 0)
+    {
         GfG obj;
     }
     cout << "End of main\n";
@@ -406,19 +410,23 @@ int main()
 
 /*
 *Static functions in a class:
-    Static member functions are allowed to access only the static data members or 
-    other static member functions they can not access the non-static data members 
-    or member functions of the class. 
+    Static member functions are allowed to access only the static data members or
+    other static member functions they can not access the non-static data members
+    or member functions of the class.
 */
-class GfG {
+class GfG
+{
 public:
     // static member function
     static void printMsg() { cout << "Welcome to GfG!"; }
 };
- 
+
 // main function
 int main()
 {
     // invoking a static member function
     GfG::printMsg();
 }
+
+
+
